@@ -1,0 +1,55 @@
+<!-- ======= Comments ======= -->
+<h5 class="comment-title py-4 total-comment">Total comment: {{ comments?.length }}</h5>
+<div class="comments">
+    <div class="comment d-flex" *ngFor="let comment of comments">
+        <div class="flex-shrink-0">
+            <div class="avatar avatar-sm rounded-circle">
+                <p-avatar [label]="comment.email[0] | uppercase" shape="circle"
+                          [style]="{ 'background-color': comment.email | stringToColor, color: '#ffffff' }"></p-avatar>
+            </div>
+        </div>
+        <div class="flex-shrink-1 ms-2 ms-sm-3">
+            <div class="comment-meta d-flex">
+                <h6 class="me-2">{{ comment.email }}</h6>
+                <span class="text-muted">{{ comment.create_at | timeAgo }}</span>
+            </div>
+            <div class="comment-body">
+                {{ comment.message }}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Comments -->
+<!-- ======= Comments Form ======= -->
+<div class="row justify-content-center mt-5">
+
+    <div class="col-lg-12">
+        <h5 class="comment-title">Leave a Comment</h5>
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="row">
+            <div class="col-lg-12 mb-3 form-email" [hidden]="emailHidden">
+                <label>Email</label>
+                <input type="text" class="form-control" id="comment-email"
+                       placeholder="Enter your email" name="email" formControlName="email" [value]="emailValue">
+            </div>
+            <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="p-error">
+                <div *ngIf="email.getError('required')">Không để trống email.</div>
+                <div *ngIf="email.getError('email')">Email không đúng định dạng.</div>
+            </div>
+            <!--                @endif-->
+            <div class="col-12 mb-3">
+                <label>Message</label>
+                <textarea class="form-control form-message" id="comment-message" name="message"
+                          placeholder="Enter your name" cols="30" rows="10" formControlName="message">
+                </textarea>
+                <div *ngIf="message.invalid && (message.touched || message.dirty)">
+                    <span class="p-error" *ngIf="message.getError('required')">Không để trống message</span>
+                </div>
+            </div>
+            <div class="col-12">
+                <button id="postComment" name="postComment" class="btn btn-primary">Post
+                    comment
+                </button>
+            </div>
+        </form>
+    </div>
+</div><!-- End Comments Form -->

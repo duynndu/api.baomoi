@@ -1,0 +1,13 @@
+<div class="trending">
+  <h3>Trending</h3>
+  <ul class="trending-post">
+    <li *ngFor="let trendingPost of trendingPosts | async">
+      <a [routerLink]="['singlePost',trendingPost.slug]">
+        <span class="number">5</span>
+        <h3>{{trendingPost.title}}</h3>
+        <span class="author">Jenny Wilson</span>
+      </a>
+    </li>
+  </ul>
+</div>
+

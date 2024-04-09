@@ -1,0 +1,41 @@
+<div (click)="handleClickLeft($event)" (contextmenu)="$event.preventDefault()" class="ng-star-inserted">
+    <div class="grid">
+        <div class="col-12">
+            <div class="px-6 pt-6 pb-0 card">
+                <div class="mb-3 border-1 border-round flex flex-row col-12 align-items-center h-3rem">
+                    <i (click)="onBack()" style="font-size: 1rem" class="pi pi-arrow-up mr-2 fw-bold"></i>
+                    <span (click)="redirect('')" class="text-xl fw-bold cursor-pointer">Images</span>
+                    <ng-container *ngFor="let value of path; let i = index">
+                        <i style="font-size: 1rem" class="pi pi-angle-right"></i>
+                        <span (click)="redirect(i)" class="text-xl fw-bold cursor-pointer">{{ value }}</span>
+                    </ng-container>
+                </div>
+                <div style="min-height: 195px" (contextmenu)="handleRightClick($event)" class="grid mt-3 pb-6" #content>
+                    <div class="col-3 md:col-2 lg:col-2" *ngFor="let item of folderData | async">
+                        <div class="folder-group">
+                            <img [style]="{height: img.offsetWidth * 0.8+'px'}" (click)="onOpenFolder(basename(item))" (contextmenu)="itemTarget = item"
+                                 class="width-full object-fit-cover"
+                                 [src]="(item.includes('.') ? api+item : 'assets/folder.png')" [alt]="basename(item)" #img>
+                            <p (keydown.enter)="false" (keyup.enter)="onRename($event, item)"
+                               (blur)="onRename($event, item)" (focus)="closeAllMenu()" [contentEditable]="true"
+                               class="text-center white-space-nowrap overflow-hidden text-overflow-ellipsis fw-bold">{{ basename(item) }}</p>
+                        </div>
+                    </div>
+                                        <p-menu [ngStyle]="{position: 'fixed',top: positionY+'px', left: positionX+'px'}"
+                                                *ngIf="menuTargetContent" [model]="optionMenuTargetContent"></p-menu>
+                                        <p-menu [ngStyle]="{position: 'fixed',top: positionY+'px', left: positionX+'px'}"
+                                                *ngIf="menuTargetItem" [model]="optionMenuTargetItem"></p-menu>
+                    <p-fileUpload class="w-full" *ngIf="uploadImageDialog" name="images[]"
+                                  [url]="api+'admin/images/uploadImages?path='+pathUrl" (onUpload)="onUpload($event)"
+                                  [multiple]="true" accept="image/*" maxFileSize="3000000">
+                        <ng-template pTemplate="content">
+                            <ul *ngIf="uploadedFiles.length">
+                                <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+                            </ul>
+                        </ng-template>
+                    </p-fileUpload>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

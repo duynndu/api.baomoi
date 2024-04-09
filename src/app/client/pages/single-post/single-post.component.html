@@ -1,0 +1,30 @@
+<app-header></app-header>
+<main id="main">
+    <section class="single-post-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 post-content" data-aos="fade-up">
+
+                    <!-- ======= Single Post Content ======= -->
+                    <div class="single-post">
+                        <div class="post-meta"><span class="date">{{ (post)?.category }}</span><span
+                            class="mx-1">&bullet;</span>
+                            <span>{{ post ?.create_at | date }}</span></div>
+                        <h1 class="mb-5">{{ post?.title }}</h1>
+                        <p>{{ post?.sumary }}</p>
+                        <img src="{{post ?.image}}" alt="" class="img-fluid">
+                        <div [innerHTML]="post?.content"></div>
+                    </div><!-- End Single Post Content -->
+
+                    <app-comment *ngIf="post?.id" [id]="post.id"></app-comment>
+
+
+                </div>
+                <div class="col-md-3">
+                    <app-sidebar-client></app-sidebar-client>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<app-footer></app-footer>

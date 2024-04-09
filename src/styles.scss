@@ -1,0 +1,45 @@
+//client
+//main
+ul{
+    padding: unset;
+    margin: unset;
+}
+.p-fluid .p-button {
+    width: auto;
+}
+.p-button{
+    border-radius: 6px;
+}
+@import "assets/client/css/main.css";
+@import "assets/client/css/variables.css";
+
+//vendor
+@import "assets/client/vendor/bootstrap/css/bootstrap.min.css";
+@import "assets/client/vendor/bootstrap-icons/bootstrap-icons.css";
+@import "assets/client/vendor/swiper/swiper-bundle.min.css";
+@import "assets/client/vendor/swiper/swiper-bundle.min.css";
+@import "assets/client/vendor/glightbox/css/glightbox.min.css";
+@import "assets/client/vendor/aos/aos.css";
+
+//font
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+//admin
+//@import '../node_modules/quill/dist/quill.bubble.css';
+@import '../node_modules/quill/dist/quill.snow.css';
+
+$gutter: 1rem;
+//for primeflex grid system
+@import "assets/layout/styles/layout/layout.scss";
+
+/* PrimeNG */
+@import "../node_modules/primeng/resources/primeng.min.css";
+@import "../node_modules/primeflex/primeflex.scss";
+@import "../node_modules/primeicons/primeicons.css";
+
+/* Demos */
+@import "assets/demo/styles/flags/flags.css";
+@import "assets/demo/styles/badges.scss";
+@import "assets/demo/styles/code.scss";

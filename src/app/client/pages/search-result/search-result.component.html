@@ -1,0 +1,52 @@
+<app-header></app-header>
+<main id="main">
+    <section class="single-post-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 aos-init aos-animate" data-aos="fade-up">
+                    <h3 class="category-title">Search Results</h3>
+                    <div class="d-md-flex post-entry-2 half" *ngFor="let post of postResult | async">
+                        <a [routerLink]="['/singlePost',post.slug]" class="me-4 thumbnail">
+                            <img [src]="post.image" alt="" class="img-fluid">
+                        </a>
+                        <div>
+                            <div class="post-meta"><span class="date">{{post.category}}</span> <span class="mx-1">•</span>
+                                <span>{{post.create_at | date}}</span></div>
+                            <h3><a [routerLink]="['/singlePost',post?.slug]">{{post?.title}}</a>
+                            </h3>
+                            <p>{{post?.sumary}}</p>
+                            <div class="d-flex align-items-center author">
+                                <div class="photo"><img src="/assets/client/img/person-2.jpg" alt=""
+                                                        class="img-fluid"></div>
+                                <div class="name">
+                                    <h3 class="m-0 p-0">{{post?.username}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-start py-4">
+                        <div class="custom-pagination">
+                            <!--                            @if($currentPage > 1)-->
+                            <a href="/search/$keyword/$currentPage-1"
+                               class="prev">Prevous</a>
+                            <!--                            @endif-->
+                            <!--                            @for($page = 1;$page <= $countPage; $page++)-->
+                            <a class="$currentPage == $page ? 'active' : ''"
+                               href="/search/$keyword/$page">$page</a>
+                            <!--                            @endfor-->
+                            <!--                            @if($currentPage < $countPage )-->
+                            <a href="/search/$keyword/$currentPage+1" class="next">Next</a>
+                            <!--                            @endif-->
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <app-sidebar-client></app-sidebar-client>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<app-footer></app-footer>

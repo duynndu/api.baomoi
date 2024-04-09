@@ -1,0 +1,17 @@
+ <!-- ======= Search Form ======= -->
+<div [ngClass]="{active: active}" class="search-form-wrap js-search-form-wrap">
+    <form [action]="['search','hello']" class="search-form" [formGroup]="formGroup" (keyup.enter)="onSubmit()">
+        <p-autoComplete formControlName="selectedKeyword"
+                        [suggestions]="filteredKeywords"
+                        placeholder="Search"
+                        (completeMethod)="filterKeyword($event)" size="20"
+                        [style]="{ height: '34px'}">
+            <ng-template let-keyword pTemplate="item">
+                <div class="flex align-items-center gap-2">
+                    <div>{{ keyword }}</div>
+                </div>
+            </ng-template>
+        </p-autoComplete>
+        <button (click)="closeSearchBar.emit(false)" type="button" class="btn js-search-close"><span class="bi-x"></span></button>
+    </form>
+</div><!-- End Search Form -->
