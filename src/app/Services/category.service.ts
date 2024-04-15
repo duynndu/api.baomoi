@@ -14,4 +14,16 @@ export class CategoryService {
     getCategory(slug: string) {
         return this.httpClient.get(environment.api + 'category/' + slug)
     }
+
+    // Admin
+
+    addCategory(category: object) {
+        return this.httpClient.post(environment.api + 'admin/category/addCategory', category)
+    }
+    editCategory(category: object, post_id: number) {
+        return this.httpClient.put(environment.api + 'admin/category/editCategory', category)
+    }
+    deleteCategory(category_ids: string) {
+        return this.httpClient.delete(environment.api + 'admin/category/deleteCategories/' + category_ids)
+    }
 }

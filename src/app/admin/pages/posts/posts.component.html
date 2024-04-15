@@ -107,7 +107,7 @@
                     </div>
                     <div class="field">
                         <label for="image">Image</label>
-                        <input type="text" pInputText id="image" [(ngModel)]="post.image" name="image" required
+                        <input [hidden]="true" type="text" pInputText id="image" [(ngModel)]="post.image" name="image" required
                                [ngClass]="{'ng-invalid ng-dirty' : submitted && formGroup.invalid}" />
                         <div *ngIf="formGroup.invalid && (submitted || formGroup.dirty)">
                             <span class="text-danger"

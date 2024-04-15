@@ -26,8 +26,8 @@ export class AppMenuComponent implements OnInit {
                 items: [
                     { label: 'Bài Viết', icon: 'pi pi-fw pi-book', routerLink: ['/admin/posts'] },
                     { label: 'Danh mục', icon: 'pi pi-fw pi-tag', routerLink: ['/admin/categories'] },
-                    { label: 'Người dùng', icon: 'pi pi-fw pi-user', routerLink: ['/admin/users'] },
-                    { label: 'Bình luận', icon: 'pi pi-fw pi-comments', routerLink: ['/admin/comments'] },
+                    // { label: 'Người dùng', icon: 'pi pi-fw pi-user', routerLink: ['/admin/users'] },
+                    // { label: 'Bình luận', icon: 'pi pi-fw pi-comments', routerLink: ['/admin/comments'] },
                     { label: 'Hình ảnh', icon: 'pi pi-fw pi-folder', routerLink: ['/admin/images'] },
                 ],
             },

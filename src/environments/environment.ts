@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    api: 'http://api.baomoi.test/',
+    api: 'http://api.express.test/',
 }
 
 /*
